@@ -11,12 +11,13 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Employee vivek = new Employee(1,"vivek", "male", 7363); 
-		Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-		SessionFactory sf = cfg.buildSessionFactory();
+		Employee vivek = new Employee("vansh", "male", 7363); 
+//		Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+//		SessionFactory sf = cfg.buildSessionFactory();
+		SessionFactory sf= new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();
-		session.save(vivek);
+		session.persist(vivek);
 		tx.commit();
 		
 
